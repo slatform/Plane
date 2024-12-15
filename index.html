@@ -28,26 +28,26 @@
         const plane = {
             x: 100,
             y: canvas.height / 2,
-            width: 40,
-            height: 30,
+            width: 50,
+            height: 40,
             color: 'red',
-            gravity: 2,
-            lift: -25,
+            gravity: 1.5,
+            lift: -20,
             velocity: 0
         };
 
         const obstacles = [];
         let score = 0;
-        let gameSpeed = 2;
+        let gameSpeed = 1.5;
         let isGameOver = false;
 
         function createObstacle() {
-            const gapHeight = 150;
+            const gapHeight = 200;
             const topHeight = Math.random() * (canvas.height / 2);
             const bottomHeight = canvas.height - topHeight - gapHeight;
             const x = canvas.width;
 
-            obstacles.push({ x, topHeight, bottomHeight, width: 50 });
+            obstacles.push({ x, topHeight, bottomHeight, width: 60 });
         }
 
         function drawPlane() {
@@ -92,8 +92,8 @@
                 if (obstacle.x + obstacle.width < 0) {
                     obstacles.splice(index, 1);
                     score++;
-                    if (score % 5 === 0) {
-                        gameSpeed += 0.5;
+                    if (score % 10 === 0) {
+                        gameSpeed += 0.2;
                     }
                 }
 
@@ -127,7 +127,7 @@
             plane.velocity = 0;
             obstacles.length = 0;
             score = 0;
-            gameSpeed = 2;
+            gameSpeed = 1.5;
             isGameOver = false;
         }
 
@@ -142,7 +142,7 @@
                 updatePlane();
                 updateObstacles();
 
-                if (Math.random() < 0.01) {
+                if (Math.random() < 0.02) {
                     createObstacle();
                 }
             }
