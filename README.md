@@ -1,2 +1,2 @@
-# Plane
+# PLANE
  plane test game 
